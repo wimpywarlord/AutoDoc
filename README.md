@@ -23,7 +23,7 @@
 
 **Link to the website** : https://easyvezy.herokuapp.com/
 
-![My Banner](/website.png)
+![My Product](/website.png)
 
 ## Getting Started 🎧
 
