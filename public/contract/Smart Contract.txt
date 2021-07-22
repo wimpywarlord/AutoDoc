@@ -1,0 +1,78 @@
+// SPDX-License-Identifier: MIT
+
+pragma solidity >0.5.0;
+pragma abicoder v2;
+
+contract InfoStudent {
+    uint public studentCount = 0;
+
+    struct Student {
+        string rollno;
+        string name;
+        string skill_filter;
+        uint cgpa;
+        uint year_of_g;
+        string trans;
+        uint achivements;
+        string school;
+        string school_code;
+        uint research;
+        uint  internship;
+    }
+    mapping(uint => Student) public students;
+
+    constructor() {
+        
+    createStudent("18BIT0131","KSHITIJ DHYANI","Blockchain",9,2022,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Information Technology and Engineering","SITE",3,1);
+    createStudent("18BCI0216","RISHABH SINGH","App Dev",8,2021,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Computer Science and Engineering","SCOPE",3,1);
+    createStudent("17BCE0001","KIRAN SOOD","Web Dev",6,2023,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Electronics and Communication","SENSE",3,1);
+    createStudent("18BIT0231","RAM SINGH","App Dev",10,2026,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Information Technology and Engineering","SITE",7,5);
+    createStudent("18BIT0111","MADHUR BHATIA","Web Dev",9,2018,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Information Technology and Engineering","SITE",2,1);
+    createStudent("18BCI0216","SURESH SINGH","Web Dev",8,2016,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Information Technology and Engineering","SITE",3,1);
+    createStudent("13BET0001","MAHAK KAUR","App Dev",6,2019,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Mechnical Engineering","MECH",3,1);
+    createStudent("15MCT0231","RAM BEHL","Web Dev",10,2020,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Information Technology and Engineering","SITE",0,3);
+    createStudent("17BBE0111","LAKSHIT KUMAR","ML",7,2030,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Computer Science and Engineering","SCOPE",3,1);
+    createStudent("18BCI0216","SHUBRA GUPTA","Blockchain",10,2045,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Chemical Engineering","CHEM",3,1);
+    createStudent("17BCE0001","JAHANVI MISHRA","Web Dev",5,2012,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Information Technology and Engineering","SITE",1,3);
+    createStudent("18BIT0231","KRISH KHERA","App Dev",7,2032,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Information Technology and Engineering","SITE",8,1);
+    createStudent("18BIT0002","PRAKASH BHATIA","ML",9,2012,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Information Technology and Engineering","SITE",7,1);
+    createStudent("18BCI0216","NITIN VENDIKARI","Web Dev",9,2062,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Computer Science and Engineering","SCOPE",4,1);
+    createStudent("17BET0012","GURBEER KAUR","Web Dev",8,2055,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Information Technology and Engineering","SITE",3,2);
+    createStudent("19MCT0156","AAGAMAN BERI","App Dev",6,2034,"5Y41jQhXl1r1JKcUVLKWMXiIQvatV/25wI8v8kcn+VtB02m+pwI35zTcBotNERnB68imSd7Cs+ayFba527o+XkX1bQHQEkA88QPhVcJC74Gf3oWoxtNalEBCRKtzD6Os",5,"School of Mechnical Engineering","MECH",3,1);
+    
+    }
+
+    function createStudent(string memory _rollno,string memory _name,string memory _skill_filter,uint _cgpa,uint _year_of_g,string memory _trans,uint _achivements,string memory _school,string memory _school_code,uint _research, uint _internship) public {
+        studentCount ++;
+        students[studentCount] = Student(_rollno,_name,_skill_filter,_cgpa,_year_of_g,_trans,_achivements,_school,_school_code,_research,_internship);
+    }
+    
+    function readStudent(uint index) public view returns (Student memory)
+    {
+         return students[index];
+    }
+    
+    function rollStudent(string memory _roll) public view returns (Student memory)
+    {
+        for(uint i=0 ; i<studentCount ; i++)
+        {
+            Student memory spec_student = students[i];
+            if(keccak256(abi.encodePacked(spec_student.rollno)) == keccak256(abi.encodePacked(_roll)))
+            {
+                 return spec_student;
+            }
+        }
+    }
+    function skillStudent(string memory _skill_filter) public view returns (Student memory)
+    {
+        for(uint i=0 ; i<studentCount ; i++)
+        {
+            Student memory skill_student = students[i];
+            if(keccak256(abi.encodePacked(skill_student.skill_filter)) == keccak256(abi.encodePacked(_skill_filter)))
+            {
+                 return skill_student;
+            }
+        }
+    }
+
+}

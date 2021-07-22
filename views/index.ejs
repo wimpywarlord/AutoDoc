@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Kshitij Dhyani</title>
+		<style>
+			@import url(https://fonts.googleapis.com/css?family=Montserrat);
+			@-webkit-keyframes spin {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+			@keyframes spin {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+			@-webkit-keyframes color-1 {
+				0% {
+					background-color: #eb73b9;
+				}
+				100% {
+					background-color: #17ead9;
+				}
+			}
+			@keyframes color-1 {
+				0% {
+					background-color: #eb73b9;
+				}
+				100% {
+					background-color: #17ead9;
+				}
+			}
+			::-moz-selection {
+				background: #00ddff;
+				color: white;
+				text-shadow: none;
+			}
+			::selection {
+				background: #00ddff;
+				color: white;
+				text-shadow: none;
+			}
+
+			::-webkit-selection {
+				background: #00ddff;
+				color: white;
+				text-shadow: none;
+			}
+
+			body {
+				font-family: "Montserrat", "Helevtica", sans-serif;
+				position: relative;
+				width: 100%;
+				height: 100vh;
+				background-color: #f2ecec;
+				color: #4b4848;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transition: background-color 1.25s ease-in-out;
+			}
+			body.is-focus {
+				background-color: #17ead9;
+			}
+
+			.title-container {
+				position: absolute;
+				top: 38%;
+				left: 50%;
+				width: 80%;
+				margin: 0 auto;
+				text-align: center;
+				overflow: hidden;
+				transform: translate(-50%, -50%);
+			}
+			.title-container .title {
+				transform: translateY(-100%);
+				transition: transform 0.3s ease;
+				transition-delay: 0.25s;
+				margin: 0;
+				color: #00ddff;
+			}
+			.title-container .title-down {
+				transform: translateY(100%);
+				transition: transform 0.3s ease;
+				transition-delay: 0.25s;
+				margin: 0;
+				color: #00ddff;
+			}
+			.is-focus .title-container .title {
+				transform: translateY(0);
+			}
+			.is-type .title-container .title-down {
+				transform: translateY(-30px);
+			}
+			.is-type .title-container .title {
+				transform: translateY(-100%);
+			}
+
+			.field-container {
+				position: relative;
+				padding: 0;
+				margin: 0;
+				border: 0;
+				width: 330px;
+				height: 40px;
+			}
+
+			.icons-container {
+				position: absolute;
+				top: 4px;
+				right: 3px;
+				width: 35px;
+				height: 35px;
+				overflow: hidden;
+			}
+
+			.icon-close {
+				position: absolute;
+				top: 2px;
+				left: 2px;
+				width: 75%;
+				height: 75%;
+				opacity: 0;
+				cursor: pointer;
+				transform: translateX(-200%);
+				border-radius: 50%;
+				transition: opacity 0.25s ease,
+					transform 0.43s cubic-bezier(0.694, 0.048, 0.335, 1);
+			}
+			.icon-close:before {
+				content: "";
+				border-radius: 50%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				border: 2px solid transparent;
+				border-top-color: #00ddff;
+				border-left-color: #00ddff;
+				border-bottom-color: #00ddff;
+				transition: opacity 0.2s ease;
+			}
+			.icon-close .x-up {
+				position: relative;
+				width: 100%;
+				height: 50%;
+			}
+			.icon-close .x-up:before {
+				content: "";
+				position: absolute;
+				bottom: 2px;
+				left: 3px;
+				width: 50%;
+				height: 2px;
+				background-color: #00ddff;
+				transform: rotate(45deg);
+			}
+			.icon-close .x-up:after {
+				content: "";
+				position: absolute;
+				bottom: 2px;
+				right: 0px;
+				width: 50%;
+				height: 2px;
+				background-color: #00ddff;
+				transform: rotate(-45deg);
+			}
+			.icon-close .x-down {
+				position: relative;
+				width: 100%;
+				height: 50%;
+			}
+			.icon-close .x-down:before {
+				content: "";
+				position: absolute;
+				top: 5px;
+				left: 4px;
+				width: 50%;
+				height: 2px;
+				background-color: #00ddff;
+				transform: rotate(-45deg);
+			}
+			.icon-close .x-down:after {
+				content: "";
+				position: absolute;
+				top: 5px;
+				right: 1px;
+				width: 50%;
+				height: 2px;
+				background-color: #00ddff;
+				transform: rotate(45deg);
+			}
+			.is-type .icon-close:before {
+				opacity: 1;
+				-webkit-animation: spin 0.85s infinite;
+				animation: spin 0.85s infinite;
+			}
+			.is-type .icon-close .x-up:before,
+			.is-type .icon-close .x-up:after {
+				-webkit-animation: color-1 0.85s infinite;
+				animation: color-1 0.85s infinite;
+			}
+			.is-type .icon-close .x-up:after {
+				-webkit-animation-delay: 0.3s;
+				animation-delay: 0.3s;
+			}
+			.is-type .icon-close .x-down:before,
+			.is-type .icon-close .x-down:after {
+				-webkit-animation: color-1 0.85s infinite;
+				animation: color-1 0.85s infinite;
+			}
+			.is-type .icon-close .x-down:before {
+				-webkit-animation-delay: 0.2s;
+				animation-delay: 0.2s;
+			}
+			.is-type .icon-close .x-down:after {
+				-webkit-animation-delay: 0.1s;
+				animation-delay: 0.1s;
+			}
+
+			.icon-search {
+				position: relative;
+				top: 5px;
+				left: 8px;
+				width: 50%;
+				height: 50%;
+				opacity: 1;
+				border-radius: 50%;
+				border: 3px solid #c7d0f8;
+				transition: opacity 0.25s ease,
+					transform 0.43s cubic-bezier(0.694, 0.048, 0.335, 1);
+			}
+			.icon-search:after {
+				content: "";
+				position: absolute;
+				bottom: -9px;
+				right: -2px;
+				width: 4px;
+				border-radius: 3px;
+				transform: rotate(-45deg);
+				height: 10px;
+				background-color: #c7d0f8;
+			}
+
+			.field {
+				border: 0;
+				width: 100%;
+				height: 100%;
+				padding: 10px 20px;
+				background: white;
+				border-radius: 3px;
+				box-shadow: 0px 8px 15px rgba(75, 72, 72, 0.1);
+				transition: all 0.4s ease;
+			}
+			.field:focus {
+				outline: none;
+				box-shadow: 0px 9px 20px rgba(75, 72, 72, 0.3);
+			}
+			.field:focus + .icons-container .icon-close {
+				opacity: 1;
+				transform: translateX(0);
+			}
+			.field:focus + .icons-container .icon-search {
+				opacity: 0;
+				transform: translateX(200%);
+			}
+			/* ASDA */
+			@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				background-color: #28223f;
+				font-family: Montserrat, sans-serif;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+
+				min-height: 100vh;
+				margin: 0;
+			}
+
+			h3 {
+				margin: 10px 0;
+			}
+
+			h6 {
+				margin: 5px 0;
+				text-transform: uppercase;
+			}
+
+			p {
+				font-size: 14px;
+				line-height: 21px;
+			}
+
+			.card-container {
+				background-color: #231e39;
+				border-radius: 5px;
+				box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
+				color: #b3b8cd;
+				padding-top: 30px;
+				position: relative;
+				width: 350px;
+				max-width: 100%;
+				text-align: center;
+			}
+
+			.card-container .pro {
+				color: #231e39;
+				background-color: #febb0b;
+				border-radius: 3px;
+				font-size: 14px;
+				font-weight: bold;
+				padding: 3px 7px;
+				position: absolute;
+				top: 30px;
+				left: 30px;
+			}
+
+			.card-container .round {
+				border: 1px solid #03bfcb;
+				border-radius: 50%;
+				padding: 7px;
+			}
+
+			button.primary {
+				background-color: #03bfcb;
+				border: 1px solid #03bfcb;
+				border-radius: 3px;
+				color: #231e39;
+				font-family: Montserrat, sans-serif;
+				font-weight: 500;
+				padding: 10px 25px;
+			}
+
+			button.primary.ghost {
+				background-color: transparent;
+				color: #02899c;
+			}
+
+			.skills {
+				background-color: #1f1a36;
+				text-align: left;
+				padding: 15px;
+				margin-top: 30px;
+			}
+
+			.skills ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			.skills ul li {
+				border: 1px solid #2d2747;
+				border-radius: 2px;
+				display: inline-block;
+				font-size: 12px;
+				margin: 0 7px 7px 0;
+				padding: 7px;
+			}
+
+			footer {
+				background-color: #222;
+				color: #fff;
+				font-size: 14px;
+				bottom: 0;
+				position: fixed;
+				left: 0;
+				right: 0;
+				text-align: center;
+				z-index: 999;
+			}
+
+			footer p {
+				margin: 10px 0;
+			}
+
+			footer i {
+				color: red;
+			}
+
+			footer a {
+				color: #3c97bf;
+				text-decoration: none;
+			}
+			.ear {
+				border-radius: 50%;
+				background-color: white;
+				border: 4px solid rgb(255, 0, 0);
+				padding: 5px;
+				font-size: 37px;
+				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+					0 1px 2px rgba(0, 0, 0, 0.24);
+				position: absolute;
+				right: 20px;
+				top: 20px;
+				transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+			}
+			.ear:hover {
+				box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+					0 10px 10px rgba(0, 0, 0, 0.22);
+				cursor: pointer;
+				transform: scale(1.1);
+			}
+			.ear2 {
+				border-radius: 50%;
+				background-color: white;
+				border: 4px solid rgb(255, 0, 0);
+				padding: 5px;
+				font-size: 37px;
+				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+					0 1px 2px rgba(0, 0, 0, 0.24);
+				position: absolute;
+				left: 20px;
+				top: 20px;
+				transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+			}
+			.ear2:hover {
+				box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+					0 10px 10px rgba(0, 0, 0, 0.22);
+				cursor: pointer;
+				transform: scale(1.1);
+			}
+		</style>
+	</head>
+	<body style="background-color: #17202a">
+		<div data-bs-toggle="modal" data-bs-target="#exampleModal" class="ear">
+			🍭
+		</div>
+		<a
+			id="transcript_student"
+			data-bs-toggle="modal"
+			data-bs-target="#exampleModal3"
+			target="_blank"
+		>
+			<div class="ear2">🎀</div>
+		</a>
+
+		<!-- <div class="title-container">
+			<h1 class="title">Searching the Student.</h1>
+			<h1 class="title-down">Looking in the Block chain...</h1>
+		</div> -->
+
+		<fieldset class="field-container">
+			<input
+				type="text"
+				id="someTextBox"
+				placeholder="Search..."
+				class="field"
+			/>
+			<div class="icons-container">
+				<div class="icon-search"></div>
+				<div class="icon-close">
+					<div class="x-up"></div>
+					<div class="x-down"></div>
+				</div>
+			</div>
+		</fieldset>
+
+		<div id="Search_Results" style="margin: 10px"></div>
+		<div class="card-container">
+			<span class="pro">STUDENT</span>
+			<img
+				class="round"
+				src="https://randomuser.me/api/portraits/women/79.jpg"
+				alt="user"
+			/>
+			<h3 id="name_of_student">Student Name</h3>
+			<h6 id="roll_no">00XXX0000</h6>
+			<p id="school">
+				Name of the School <br />
+				TGoes Here
+			</p>
+			<div class="buttons">
+				<button class="primary">3th Year</button>
+				<a href="/charthome">
+					<button id="school_code" class="primary ghost">
+						ANALYTICS
+					</button></a
+				>
+			</div>
+			<div class="skills">
+				<h6>Skills</h6>
+				<ul>
+					<li id="cgpa">CGPA : 0</li>
+					<li id="year_of_g">GRADUATION : 0</li>
+					<li id="achivements">AWARDS : 0</li>
+					<li id="internship">INTERNSHIPS : 0</li>
+					<li id="research">S RESEARCH : 0</li>
+					<li id="no_of_back">N GRADES : 0</li>
+					<li>AGE : 21</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Modal 1-->
+		<div
+			class="modal fade"
+			id="exampleModal"
+			tabindex="-1"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">
+							Modal title
+						</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="mb-3">
+								<label for="skill" class="form-label"
+									>Enter the Skill Filter</label
+								>
+								<div id="emailHelp" class="form-text">
+									Choose from Web dev, App dev, Blockchain,
+									and ML.
+								</div>
+								<input
+									type="text"
+									class="form-control"
+									id="skill_input_box"
+									aria-describedby="skillfilter"
+								/>
+							</div>
+							<button
+								type="button"
+								onclick="give_all_student_with_skill()"
+								class="btn btn-primary"
+								data-bs-toggle="modal"
+								data-bs-target="#exampleModal"
+							>
+								Submit
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal 2-->
+		<div
+			class="modal fade"
+			id="exampleModal2"
+			tabindex="-1"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">
+							Modal title
+						</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<div id="list_box"></div>
+					</div>
+					<div class="modal-footer">
+						<button
+							type="button"
+							class="btn btn-secondary"
+							data-bs-dismiss="modal"
+						>
+							Close
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal 3 -->
+		<div
+			class="modal fade"
+			id="exampleModal3"
+			tabindex="-1"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">
+							Modal title
+						</h5>
+						<button
+							type="button"
+							class="close"
+							data-dismiss="modal"
+							aria-label="Close"
+						>
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<iframe
+							src="https://drive.google.com/file/d/1TRGQZDbI5qq321cqLv39lr4LNQKUTFZI/preview"
+							frameborder="0"
+							height="600px"
+							width="100%"
+						></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- CARD -->
+		<footer>
+			<p>
+				Created with 💗<i class="fa fa-heart">by </i>
+				<a target="_blank" href="/team">Team Wimpy</a>
+			</p>
+		</footer>
+	</body>
+	<!-- ENCRYPTION OF TRANSCRIPT LINK -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
+		integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
+		crossorigin="anonymous"
+	></script>
+
+	<!-- JQUERY -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<script
+		src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+		crossorigin="anonymous"
+	></script>
+	<!-- BOOT STRAP -->
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+		crossorigin="anonymous"
+	/>
+	<!-- JavaScript Bundle with Popper -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+		crossorigin="anonymous"
+	></script>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<!-- THIS THIS WEB3 BELOW -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.4/web3.min.js"></script>
+	<script>
+		// FORM ANIMATION
+		$(document).on("ready", function () {
+			$(".field").on("focus", function () {
+				$("body").addClass("is-focus");
+			});
+
+			$(".field").on("blur", function () {
+				$("body").removeClass("is-focus is-type");
+			});
+
+			$(".field").on("keydown", function (event) {
+				$("body").addClass("is-type");
+				if (event.which === 8 && $(this).val() === "") {
+					$("body").removeClass("is-type");
+				}
+			});
+		});
+		// ENTER KEY DETECTION
+		$("#someTextBox").keypress(function (event) {
+			var keycode = event.keyCode ? event.keyCode : event.which;
+			if (keycode == "13") {
+				console.log($("#someTextBox").val());
+				printStudent($("#someTextBox").val());
+			}
+		});
+		// WEb3
+		async function loadWeb3() {
+			if (window.ethereum) {
+				window.web3 = new Web3(window.ethereum);
+				window.ethereum.enable();
+			}
+		}
+		async function loadContract() {
+			return await new window.web3.eth.Contract(
+				[
+					{
+						inputs: [],
+						stateMutability: "nonpayable",
+						type: "constructor",
+					},
+					{
+						inputs: [
+							{
+								internalType: "string",
+								name: "_rollno",
+								type: "string",
+							},
+							{
+								internalType: "string",
+								name: "_name",
+								type: "string",
+							},
+							{
+								internalType: "string",
+								name: "_skill_filter",
+								type: "string",
+							},
+							{
+								internalType: "uint256",
+								name: "_cgpa",
+								type: "uint256",
+							},
+							{
+								internalType: "uint256",
+								name: "_year_of_g",
+								type: "uint256",
+							},
+							{
+								internalType: "string",
+								name: "_trans",
+								type: "string",
+							},
+							{
+								internalType: "uint256",
+								name: "_achivements",
+								type: "uint256",
+							},
+							{
+								internalType: "string",
+								name: "_school",
+								type: "string",
+							},
+							{
+								internalType: "string",
+								name: "_school_code",
+								type: "string",
+							},
+							{
+								internalType: "uint256",
+								name: "_research",
+								type: "uint256",
+							},
+							{
+								internalType: "uint256",
+								name: "_internship",
+								type: "uint256",
+							},
+						],
+						name: "createStudent",
+						outputs: [],
+						stateMutability: "nonpayable",
+						type: "function",
+					},
+					{
+						inputs: [
+							{
+								internalType: "uint256",
+								name: "index",
+								type: "uint256",
+							},
+						],
+						name: "readStudent",
+						outputs: [
+							{
+								components: [
+									{
+										internalType: "string",
+										name: "rollno",
+										type: "string",
+									},
+									{
+										internalType: "string",
+										name: "name",
+										type: "string",
+									},
+									{
+										internalType: "string",
+										name: "skill_filter",
+										type: "string",
+									},
+									{
+										internalType: "uint256",
+										name: "cgpa",
+										type: "uint256",
+									},
+									{
+										internalType: "uint256",
+										name: "year_of_g",
+										type: "uint256",
+									},
+									{
+										internalType: "string",
+										name: "trans",
+										type: "string",
+									},
+									{
+										internalType: "uint256",
+										name: "achivements",
+										type: "uint256",
+									},
+									{
+										internalType: "string",
+										name: "school",
+										type: "string",
+									},
+									{
+										internalType: "string",
+										name: "school_code",
+										type: "string",
+									},
+									{
+										internalType: "uint256",
+										name: "research",
+										type: "uint256",
+									},
+									{
+										internalType: "uint256",
+										name: "internship",
+										type: "uint256",
+									},
+								],
+								internalType: "struct InfoStudent.Student",
+								name: "",
+								type: "tuple",
+							},
+						],
+						stateMutability: "view",
+						type: "function",
+					},
+					{
+						inputs: [
+							{
+								internalType: "string",
+								name: "_roll",
+								type: "string",
+							},
+						],
+						name: "rollStudent",
+						outputs: [
+							{
+								components: [
+									{
+										internalType: "string",
+										name: "rollno",
+										type: "string",
+									},
+									{
+										internalType: "string",
+										name: "name",
+										type: "string",
+									},
+									{
+										internalType: "string",
+										name: "skill_filter",
+										type: "string",
+									},
+									{
+										internalType: "uint256",
+										name: "cgpa",
+										type: "uint256",
+									},
+									{
+										internalType: "uint256",
+										name: "year_of_g",
+										type: "uint256",
+									},
+									{
+										internalType: "string",
+										name: "trans",
+										type: "string",
+									},
+									{
+										internalType: "uint256",
+										name: "achivements",
+										type: "uint256",
+									},
+									{
+										internalType: "string",
+										name: "school",
+										type: "string",
+									},
+									{
+										internalType: "string",
+										name: "school_code",
+										type: "string",
+									},
+									{
+										internalType: "uint256",
+										name: "research",
+										type: "uint256",
+									},
+									{
+										internalType: "uint256",
+										name: "internship",
+										type: "uint256",
+									},
+								],
+								internalType: "struct InfoStudent.Student",
+								name: "",
+								type: "tuple",
+							},
+						],
+						stateMutability: "view",
+						type: "function",
+					},
+					{
+						inputs: [
+							{
+								internalType: "string",
+								name: "_skill_filter",
+								type: "string",
+							},
+						],
+						name: "skillStudent",
+						outputs: [
+							{
+								components: [
+									{
+										internalType: "string",
+										name: "rollno",
+										type: "string",
+									},
+									{
+										internalType: "string",
+										name: "name",
+										type: "string",
+									},
+									{
+										internalType: "string",
+										name: "skill_filter",
+										type: "string",
+									},
+									{
+										internalType: "uint256",
+										name: "cgpa",
+										type: "uint256",
+									},
+									{
+										internalType: "uint256",
+										name: "year_of_g",
+										type: "uint256",
+									},
+									{
+										internalType: "string",
+										name: "trans",
+										type: "string",
+									},
+									{
+										internalType: "uint256",
+										name: "achivements",
+										type: "uint256",
+									},
+									{
+										internalType: "string",
+										name: "school",
+										type: "string",
+									},
+									{
+										internalType: "string",
+										name: "school_code",
+										type: "string",
+									},
+									{
+										internalType: "uint256",
+										name: "research",
+										type: "uint256",
+									},
+									{
+										internalType: "uint256",
+										name: "internship",
+										type: "uint256",
+									},
+								],
+								internalType: "struct InfoStudent.Student",
+								name: "",
+								type: "tuple",
+							},
+						],
+						stateMutability: "view",
+						type: "function",
+					},
+					{
+						inputs: [],
+						name: "studentCount",
+						outputs: [
+							{
+								internalType: "uint256",
+								name: "",
+								type: "uint256",
+							},
+						],
+						stateMutability: "view",
+						type: "function",
+					},
+					{
+						inputs: [
+							{
+								internalType: "uint256",
+								name: "",
+								type: "uint256",
+							},
+						],
+						name: "students",
+						outputs: [
+							{
+								internalType: "string",
+								name: "rollno",
+								type: "string",
+							},
+							{
+								internalType: "string",
+								name: "name",
+								type: "string",
+							},
+							{
+								internalType: "string",
+								name: "skill_filter",
+								type: "string",
+							},
+							{
+								internalType: "uint256",
+								name: "cgpa",
+								type: "uint256",
+							},
+							{
+								internalType: "uint256",
+								name: "year_of_g",
+								type: "uint256",
+							},
+							{
+								internalType: "string",
+								name: "trans",
+								type: "string",
+							},
+							{
+								internalType: "uint256",
+								name: "achivements",
+								type: "uint256",
+							},
+							{
+								internalType: "string",
+								name: "school",
+								type: "string",
+							},
+							{
+								internalType: "string",
+								name: "school_code",
+								type: "string",
+							},
+							{
+								internalType: "uint256",
+								name: "research",
+								type: "uint256",
+							},
+							{
+								internalType: "uint256",
+								name: "internship",
+								type: "uint256",
+							},
+						],
+						stateMutability: "view",
+						type: "function",
+					},
+				],
+				"0xAe73C5386F807c208423703E317244e08992d7A3"
+			);
+		}
+		// var encrypted = CryptoJS.AES.encrypt(
+		// 	"https://drive.google.com/file/d/1TRGQZDbI5qq321cqLv39lr4LNQKUTFZI/view?usp=sharing",
+		// 	"kd"
+		// );
+		// console.log(encrypted.toString());
+		async function give_all_student_with_skill() {
+			var search_value_skill = $("#skill_input_box").val();
+			console.log(search_value_skill);
+			if (search_value_skill == "Web Dev") {
+				var myModal = new bootstrap.Modal(
+					document.getElementById("exampleModal2")
+				);
+				myModal.show();
+				var para = document.createElement("ul");
+				para.innerHTML =
+					"<li>17BET0012</li><li>18BCI0216</li><li>18BIT0111</li><li>15MCT0231</li><li>17BCE0001</li><li>18BCI0216</li>";
+				document.getElementById("list_box").appendChild(para);
+			}
+			if (search_value_skill == "App Dev") {
+				var myModal = new bootstrap.Modal(
+					document.getElementById("exampleModal2")
+				);
+				myModal.show();
+				var para = document.createElement("ul");
+				para.innerHTML =
+					"<li>18BCI0216</li><li>18BIT0231</li><li>13BET0001</li><li>18BIT0231</li><li>19MCT0156</li>";
+				document.getElementById("list_box").appendChild(para);
+			}
+			if (search_value_skill == "Blockchain") {
+				var myModal = new bootstrap.Modal(
+					document.getElementById("exampleModal2")
+				);
+				myModal.show();
+				var para = document.createElement("ul");
+				para.innerHTML = "<li>18BIT0131</li><li>18BCI0216</li>";
+				document.getElementById("list_box").appendChild(para);
+			}
+			if (search_value_skill == "ML") {
+				var myModal = new bootstrap.Modal(
+					document.getElementById("exampleModal2")
+				);
+				myModal.show();
+				var para = document.createElement("ul");
+				para.innerHTML = "<li>18BIT0002</li><li>17BBE0111</li>";
+				document.getElementById("list_box").appendChild(para);
+			}
+		}
+		async function printStudent(roll_no) {
+			const student = await window.contract.methods
+				.rollStudent(roll_no)
+				.call();
+			console.log(student);
+			// console.log($("#name_of_student").html());
+			if (student.name !== "") {
+				$("#name_of_student").html(student.name);
+				$("#roll_no").html(student.rollno);
+				$("#cgpa").html("CGPA : " + student.cgpa);
+				$("#achivements").html("ACHIEVEMENT :" + student.achivements);
+				$("#internship").html("INTERNSHIPS :" + student.internship);
+				// console.log(student.trans);
+
+				var decrypted = CryptoJS.AES.decrypt(
+					"U2FsdGVkX18ncD1aa9c6UeBKCxlEuTX9b/CZwB6cW2uhYvl0Lw1w+wN4pt7/uFWZuGOskm4qV+VOYOXEHKKNDn4rcdIBHcoO8sr1e8I5p3DTazvtZeeEU8SingYnCTlax1PcNwIiifPTGhVWfqLhtQ==",
+					"kd"
+				);
+				//  THE SECRET KEY SHARED ONLY BETWEEN THE INSTITUTE AND PLATFORM
+				console.log(decrypted.toString(CryptoJS.enc.Utf8));
+				// document.getElementById("transcript_student").href =
+				// 	decrypted.toString(CryptoJS.enc.Utf8);
+				$("#research").html("RESEARCH : " + student.research);
+				$("#school").html(student.school);
+				$("#school_code").html(student.school_code);
+				$("#year_of_g").html("GRADUATION : " + student.year_of_g);
+			} else {
+				swal(
+					"Wrong Search Query",
+					"Enter a Valid roll Number for searching!",
+					"error"
+				);
+			}
+
+			// const response = window.contract.methods
+			// 	.createStudent(
+			// 		"TEST",
+			// 		"JAHANVI MISHRA",
+			// 		21,
+			// 		5,
+			// 		2012,
+			// 		0,
+			// 		5,
+			// 		"School of Information Technology and Engineering",
+			// 		"SITE",
+			// 		1,
+			// 		3
+			// 	)
+			// 	.call();
+			// console.log(response);
+		}
+		async function load() {
+			await loadWeb3();
+			window.contract = await loadContract();
+		}
+		load();
+	</script>
+</html>
