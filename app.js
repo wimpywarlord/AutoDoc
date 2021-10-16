@@ -1,5 +1,4 @@
 const express = require("express");
-var bodyParser = require("body-parser");
 
 const app = express();
 
@@ -11,29 +10,27 @@ app.use(express.static(__dirname + "/public"));
 
 app.set("view engine", "ejs");
 
-var bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(
-  bodyParser.urlencoded({
+  express.urlencoded({
     extended: true,
   })
 );
 
 app.get("/", (req, res) => {
-    res.render("./login.ejs");
+    res.render("./login");
 });
 
 app.get("/index", (req, res) => {
-    res.render("./index.ejs");
+    res.render("./index");
 });
 
 app.get("/charthome", (req, res) => {
-    res.render("./charthome.ejs");
+    res.render("./charthome");
 });
 
 app.get("/academic", (req, res) => {
-    res.render("./academic.ejs");
+    res.render("./academic");
 });
 
 app.get("/nonacad", (req, res) => {
@@ -45,11 +42,11 @@ app.get("/comparative", (req, res) => {
 });
 
 app.get("/team", (req, res) => {
-    res.render("./teamkshitij.ejs");
+    res.render("./teamkshitij");
 });
 
 app.get("*", (req, res) => {
-    res.render("./notfound.ejs");
+    res.render("./notfound");
 });
   
 
